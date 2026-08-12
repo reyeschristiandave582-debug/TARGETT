@@ -17,7 +17,7 @@ const AnimatedBackground = () => {
 
       <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-15">
           <Image
-            src="https://i.imgur.com/2IDGicn.png"
+            src="https://i.imgur.com/WPaMMGJ.png"
             alt=""
             width={100}
             height={100}
