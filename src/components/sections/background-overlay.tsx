@@ -52,7 +52,7 @@ const AnimatedBackground = () => {
             className="absolute bottom-40 left-16 w-20 h-20 object-contain animate-float-gentle"
           />
           <Image
-            src="https://i.imgur.com/0cu9lsY.png"
+            src="https://i.imgur.com/l0LWAdE.png"
             alt=""
             width={80}
             height={80}
