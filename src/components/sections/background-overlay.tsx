@@ -24,21 +24,21 @@ const AnimatedBackground = () => {
             className="absolute top-20 left-10 w-17 h-17 object-contain animate-float-gentle delay-1000"
           />
           <Image
-            src="https://i.imgur.com/vO9Qk3n.png"
+            src="https://i.imgur.com/D6hC9Rb.png"
             alt=""
             width={160}
             height={160}
             className="absolute top-32 right-10 w-20 h-20 object-contain animate-float-gentle"
           />
           <Image
-            src="https://i.imgur.com/S13gF0M.png"
+            src="https://i.imgur.com/WalF4gZ.png"
             alt=""
             width={160}
             height={160}
             className="absolute top-1/3 left-20 w-20 h-20 object-contain animate-float-gentle"
           />
           <Image
-            src="https://i.imgur.com/K7kshRo.png"
+            src="https://i.imgur.com/bh6DStK.png"
             alt=""
             width={160}
             height={160}
