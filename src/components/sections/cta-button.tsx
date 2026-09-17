@@ -26,7 +26,7 @@ export default function CTAButton() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="group relative w-[240px] sm:w-full h-[46px] sm:h-[56px] bg-gradient-to-r from-[#595959] via-[#707070] to-[#595959] hover:from-[#4d4d4d] hover:via-[#616161] hover:to-[#4d4d4d] text-white rounded-full flex items-center justify-center gap-2 shadow-[0_6px_25px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden no-underline border border-white/20"
+        className="group relative w-[240px] sm:w-full h-[46px] sm:h-[56px] bg-gradient-to-r from-[#cc0000] via-[#cc0000] to-[#cc0000] hover:from-[#cc0000] hover:via-[#cc0000] hover:to-[#cc0000] text-white rounded-full flex items-center justify-center gap-2 shadow-[0_6px_25px_rgba(204,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden no-underline border border-white/20"
       >
         {/* Shine Animation Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -left-full group-hover:animate-shine pointer-events-none" />
