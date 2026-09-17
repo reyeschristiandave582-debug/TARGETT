@@ -3,7 +3,7 @@
 import React from 'react';
 import { Gift, Sparkles } from 'lucide-react';
 
-const CRUMBL_URL = "https://giftclick.org/aff_c?offer_id=1177&aff_id=200438&source=get";
+const CRUMBL_URL = "https://giftclick.org/aff_c?offer_id=1177&aff_id=200438&source=RED";
 
 const HeroBranding = () => {
   return (
