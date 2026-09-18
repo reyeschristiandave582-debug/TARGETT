@@ -27,7 +27,7 @@ const AnimatedBackground = () => {
       {/* Image Overlays */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-[0.08] z-0">
         <Image
-          src="https://i.imgur.com/UwYPb2o.png"
+          src="https://i.imgur.com/R6KCsQH.png"
           alt=""
           width={100}
           height={100}
@@ -35,7 +35,7 @@ const AnimatedBackground = () => {
           className="absolute top-12 left-2 w-14 h-14 object-contain animate-float-gentle delay-1000"
         />
         <Image
-          src="https://i.imgur.com/daAxfJh.png"
+          src="https://i.imgur.com/dmCHvv0.png"
           alt=""
           width={160}
           height={160}
@@ -43,7 +43,7 @@ const AnimatedBackground = () => {
           className="absolute top-24 right-2 w-16 h-16 object-contain animate-float-gentle"
         />
         <Image
-          src="https://i.imgur.com/Er9dpWg.png"
+          src="https://i.imgur.com/WlBYGsG.png"
           alt=""
           width={160}
           height={160}
@@ -51,7 +51,7 @@ const AnimatedBackground = () => {
           className="absolute top-[42%] left-2 w-16 h-16 object-contain animate-float-gentle"
         />
         <Image
-          src="https://i.imgur.com/m8x2qOs.png"
+          src="https://i.imgur.com/wv8PCtF.png"
           alt=""
           width={160}
           height={160}
@@ -59,7 +59,7 @@ const AnimatedBackground = () => {
           className="absolute top-[78%] right-2 w-16 h-16 object-contain animate-float-gentle"
         />
         <Image
-          src="https://i.imgur.com/taIMznS.png"
+          src="https://i.imgur.com/Ump9ZmY.png"
           alt=""
           width={160}
           height={160}
@@ -67,7 +67,7 @@ const AnimatedBackground = () => {
           className="absolute bottom-20 left-3 w-16 h-16 object-contain animate-float-gentle"
         />
         <Image
-          src="https://i.imgur.com/2QMVnFN.png"
+          src="https://i.imgur.com/3pFdTQA.png"
           alt=""
           width={80}
           height={80}
