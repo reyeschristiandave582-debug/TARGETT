@@ -122,10 +122,10 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Floating Social Proof Toast - Placed at bottom-10 (matching 2nd photo exactly) */}
+      {/* Floating Social Proof Toast */}
       {currentNotif && (
         <div
-          className={`fixed bottom-10 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-full border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2 shadow-lg transition-all duration-300 ease-in-out pointer-events-none ${
+          className={`fixed bottom-12 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-full border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2 shadow-lg transition-all duration-300 ease-in-out pointer-events-none ${
             isVisible
               ? "translate-y-0 opacity-100"
               : "translate-y-4 opacity-0"
