@@ -65,7 +65,7 @@ export default function AnnouncementBar() {
       {/* Top Banner Bar - iOS Safe Area Padding + Security Badges */}
       <div 
         className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2 px-3 sm:px-4 shadow-sm backdrop-blur-md"
-        style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 24px)" }}
+        style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 6px)" }}
       >
         {/* Background Sparkles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
@@ -108,13 +108,13 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Floating Social Proof Toast - 10/10 Pixel-Perfect Alignment */}
+      {/* Floating Social Proof Toast - Top Anchored Below Banner */}
       {currentNotif && (
         <div
-          className={`fixed bottom-8 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-[340px] mx-auto sm:mx-0 flex items-center gap-2 rounded-full border border-gray-200/90 bg-white/98 backdrop-blur-md px-3 py-1.5 shadow-md overflow-hidden transition-all duration-300 ease-in-out pointer-events-none ${
+          className={`fixed top-16 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-[340px] mx-auto sm:mx-0 flex items-center gap-2 rounded-full border border-gray-200/90 bg-white/98 backdrop-blur-md px-3 py-1.5 shadow-md overflow-hidden transition-all duration-300 ease-in-out pointer-events-none ${
             isVisible
               ? "translate-y-0 opacity-100"
-              : "translate-y-3 opacity-0"
+              : "-translate-y-3 opacity-0"
           }`}
         >
           <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#CC0000] text-white">
