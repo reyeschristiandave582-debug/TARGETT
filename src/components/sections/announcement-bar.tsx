@@ -62,7 +62,7 @@ export default function AnnouncementBar() {
 
   return (
     <>
-      {/* Top Banner Bar - Clean Security & Compliance Badges */}
+      {/* Top Banner Bar - iOS Safe Area Padding + Security Badges */}
       <div 
         className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2 px-3 sm:px-4 shadow-sm backdrop-blur-md"
         style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 24px)" }}
@@ -81,7 +81,7 @@ export default function AnnouncementBar() {
 
         {/* Content Stack */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto space-y-0.5">
-          {/* Main Security Headline */}
+          {/* Headline */}
           <div className="flex items-center justify-center gap-1 w-full text-center">
             <Lock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white shrink-0 -mt-0.5" strokeWidth={2.5} />
             <p className="text-white text-[9px] xs:text-[10px] sm:text-[11px] font-bold tracking-tight leading-none">
@@ -89,7 +89,7 @@ export default function AnnouncementBar() {
             </p>
           </div>
 
-          {/* Subtext Trust Badges (No Timer) */}
+          {/* Subtext Trust Badges */}
           <div className="flex items-center justify-center gap-1.5 text-white/90">
             <span className="text-[7.5px] xs:text-[8px] sm:text-[8.5px] uppercase tracking-wider font-semibold">
               SECURE ELIGIBILITY CHECK
@@ -108,10 +108,10 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Floating Social Proof Toast - Clean Floating Position Below CTA */}
+      {/* Floating Social Proof Toast - Placed cleanly in bottom whitespace */}
       {currentNotif && (
         <div
-          className={`fixed bottom-12 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-full border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2 shadow-lg transition-all duration-300 ease-in-out pointer-events-none ${
+          className={`fixed bottom-8 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-full border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2 shadow-lg transition-all duration-300 ease-in-out pointer-events-none ${
             isVisible
               ? "translate-y-0 opacity-100"
               : "translate-y-4 opacity-0"
