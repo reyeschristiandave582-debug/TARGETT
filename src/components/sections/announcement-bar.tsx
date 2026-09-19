@@ -76,7 +76,7 @@ export default function AnnouncementBar() {
 
   return (
     <>
-      {/* Top Banner Bar with Explicit Inline Dynamic Safe-Area Spacing */}
+      {/* Top Banner Bar - Perfect Status Bar Clearance */}
       <div 
         className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2 px-3 sm:px-4 shadow-sm backdrop-blur-md"
         style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 24px)" }}
@@ -95,7 +95,7 @@ export default function AnnouncementBar() {
 
         {/* Content Stack */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto space-y-0.5">
-          {/* Main Security Headline */}
+          {/* Headline */}
           <div className="flex items-center justify-center gap-1 w-full text-center">
             <Lock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white shrink-0 -mt-0.5" strokeWidth={2.5} />
             <p className="text-white text-[9px] xs:text-[10px] sm:text-[11px] font-bold tracking-tight leading-none">
@@ -103,7 +103,7 @@ export default function AnnouncementBar() {
             </p>
           </div>
 
-          {/* Subtext + Dynamic Urgency Timer */}
+          {/* Subtext + Timer */}
           <div className="flex items-center justify-center gap-1.5 text-white/90">
             <span className="text-[7.5px] xs:text-[8px] sm:text-[8.5px] uppercase tracking-wider font-semibold">
               SECURE ELIGIBILITY CHECK
@@ -116,26 +116,26 @@ export default function AnnouncementBar() {
           </div>
         </div>
 
-        {/* Accent Border Line */}
+        {/* Accent Line */}
         <div className="absolute bottom-0 left-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent w-full opacity-60 overflow-hidden">
           <div className="absolute inset-0 bg-white/40 animate-shine"></div>
         </div>
       </div>
 
-      {/* Social Proof Toast Positioned Above Legal Text */}
+      {/* Floating Social Proof Toast - Floats cleanly above CTA button */}
       {currentNotif && (
         <div
-          className={`fixed bottom-16 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-xs mx-auto sm:mx-0 flex items-center gap-2 rounded-lg border-l-[3px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3 py-2 shadow-lg transition-all duration-300 ease-in-out ${
+          className={`fixed bottom-[185px] sm:bottom-8 left-4 right-4 sm:left-6 sm:right-auto z-[9999] max-w-[290px] mx-auto sm:mx-0 flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/95 backdrop-blur-md px-3.5 py-1.5 shadow-md transition-all duration-300 ease-in-out ${
             isVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-4 opacity-0 pointer-events-none"
+              ? "translate-y-0 opacity-100 scale-100"
+              : "translate-y-3 opacity-0 scale-95 pointer-events-none"
           }`}
         >
           <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#CC0000] text-white">
             <Check className="w-2.5 h-2.5" strokeWidth={3} />
           </div>
 
-          <div className="text-[10px] sm:text-[11px] text-[#222222] truncate leading-tight">
+          <div className="text-[9.5px] sm:text-[10.5px] text-[#222222] truncate leading-tight">
             <span className="font-bold">{currentNotif.name} </span>
             <span className="text-[#555555]">{currentNotif.action}</span>
           </div>
