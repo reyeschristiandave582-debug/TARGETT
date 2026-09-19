@@ -39,7 +39,7 @@ const notifications: NotificationItem[] = Array.from({ length: 100 }, (_, i) => 
 }));
 
 /**
- * AnnouncementBar Component (Target Edition with Shuffled Names)
+ * AnnouncementBar Component (Target Edition with Safe Area & Optimized Layout)
  */
 const AnnouncementBar = () => {
   const [currentNotif, setCurrentNotif] = useState<NotificationItem | null>(null);
@@ -75,42 +75,40 @@ const AnnouncementBar = () => {
 
   return (
     <>
-      {/* Target Red Top Banner Bar */}
-      <div className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] py-1 px-2 sm:px-4 shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur-md">
+      {/* Target Red Top Banner Bar with Safe Area Insets */}
+      <div className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pt-safe pt-2 pb-1.5 px-3 sm:px-4 shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur-md">
         {/* Sparkle Icons Overlay */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-25">
           <Sparkles 
-            className="absolute left-[5%] sm:left-[10%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-pulse" 
+            className="absolute left-[3%] sm:left-[8%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-pulse" 
             strokeWidth={1.5}
           />
           <Sparkles 
-            className="absolute right-[5%] sm:right-[10%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-pulse" 
+            className="absolute right-[3%] sm:right-[8%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-pulse" 
             strokeWidth={1.5}
           />
         </div>
 
         {/* Main Content Container */}
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto">
+        <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto px-2">
           {/* Top Row: Security & Social Proof Combined */}
-          <div className="flex items-center justify-center gap-1.5 sm:gap-3 w-full">
-            <div className="flex items-center justify-center gap-1.5 text-center max-w-full">
-              <Lock 
-                className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white shrink-0" 
-                strokeWidth={2.5}
-              />
-              <p className="text-white text-[10px] xs:text-[11px] sm:text-[12px] font-bold tracking-tight text-center leading-tight">
-                256-Bit SSL Secured &bull; Over 1,400+ participants completed verification today
-              </p>
-            </div>
+          <div className="flex items-center justify-center gap-1.5 w-full text-center">
+            <Lock 
+              className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white shrink-0 -mt-0.5" 
+              strokeWidth={2.5}
+            />
+            <p className="text-white text-[9.5px] xs:text-[10.5px] sm:text-[12px] font-bold tracking-tight leading-snug">
+              256-Bit SSL Secured &bull; Over 1,400+ participants completed verification today
+            </p>
           </div>
 
           {/* Bottom Row: Subtext with decorative dashes */}
           <div className="flex items-center justify-center gap-1.5 mt-0.5">
-            <span className="text-white/80 text-[9px] font-light">&mdash;</span>
-            <p className="text-white text-[8px] sm:text-[9px] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-extrabold whitespace-nowrap">
+            <span className="text-white/80 text-[8px] sm:text-[9px] font-light">&mdash;</span>
+            <p className="text-white text-[7.5px] xs:text-[8.5px] sm:text-[9px] uppercase tracking-[0.08em] sm:tracking-[0.12em] font-extrabold whitespace-nowrap">
               SECURE ELIGIBILITY CHECK &bull; PRIVACY PROTECTED
             </p>
-            <span className="text-white/80 text-[9px] font-light">&mdash;</span>
+            <span className="text-white/80 text-[8px] sm:text-[9px] font-light">&mdash;</span>
           </div>
         </div>
 
@@ -123,7 +121,7 @@ const AnnouncementBar = () => {
       {/* Floating Live Social Proof Notification (Bottom Anchored) */}
       {currentNotif && (
         <div
-          className={`fixed bottom-4 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-md mx-auto sm:mx-0 flex items-center gap-2.5 rounded-xl border-l-[4px] border-[#CC0000] bg-white/95 backdrop-blur-md px-3 py-2.5 shadow-[0_10px_25px_rgba(0,0,0,0.18)] overflow-hidden transition-all duration-500 ease-in-out ${
+          className={`fixed bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-md mx-auto sm:mx-0 flex items-center gap-2.5 rounded-xl border-l-[4px] border-[#CC0000] bg-white/95 backdrop-blur-md px-3.5 py-2.5 shadow-[0_10px_25px_rgba(0,0,0,0.18)] overflow-hidden transition-all duration-500 ease-in-out ${
             isVisible
               ? "translate-y-0 opacity-100"
               : "translate-y-6 opacity-0 pointer-events-none"
