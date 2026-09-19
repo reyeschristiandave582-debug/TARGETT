@@ -8,7 +8,6 @@ interface NotificationItem {
   action: string;
 }
 
-// Brand-new, unique name list for Target
 const firstNames = [
   "Marcus", "Chloe", "Ethan", "Savannah", "Lucas", "Maya", "Mason", "Zoey", "Benjamin", "Penelope",
   "Logan", "Lillian", "Alexander", "Nora", "Jackson", "Riley", "Sebastian", "Zoey", "Jack", "Stella",
@@ -36,16 +35,13 @@ const notifications: NotificationItem[] = Array.from({ length: 100 }, (_, i) => 
 
 /**
  * High-Converting AnnouncementBar & Social Proof Toast (Target Edition)
- * Includes iOS safe area top spacing, dynamic urgency timer, and optimized toast placement.
+ * Adjusted with pt-14 top padding and bottom-[160px] toast positioning.
  */
 const AnnouncementBar = () => {
   const [currentNotif, setCurrentNotif] = useState<NotificationItem | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  
-  // 5-minute countdown timer state
   const [timeLeft, setTimeLeft] = useState<number>(300);
 
-  // Dynamic countdown timer
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 300));
@@ -59,7 +55,6 @@ const AnnouncementBar = () => {
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  // Live social proof toast rotation
   useEffect(() => {
     const showRandomNotif = () => {
       const randomIndex = Math.floor(Math.random() * notifications.length);
@@ -87,8 +82,8 @@ const AnnouncementBar = () => {
 
   return (
     <>
-      {/* Top Banner Bar with Explicit Top Padding for iOS Status Bar */}
-      <div className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pt-10 sm:pt-[calc(env(safe-area-inset-top)+10px)] pb-2 px-3 sm:px-4 shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur-md">
+      {/* Top Banner Bar with Expanded Top Padding for Status Bar Clearance */}
+      <div className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pt-14 sm:pt-[calc(env(safe-area-inset-top)+14px)] pb-2.5 px-3 sm:px-4 shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur-md">
         {/* Background Sparkles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
           <Sparkles 
@@ -133,10 +128,10 @@ const AnnouncementBar = () => {
         </div>
       </div>
 
-      {/* Social Proof Floating Toast (Positioned safely above CTA button) */}
+      {/* Social Proof Floating Toast (Elevated to bottom-[160px] to clear Step 5) */}
       {currentNotif && (
         <div
-          className={`fixed bottom-[110px] sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-xl border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2.5 shadow-[0_12px_30px_rgba(0,0,0,0.22)] overflow-hidden transition-all duration-500 ease-in-out ${
+          className={`fixed bottom-[160px] sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-xl border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2.5 shadow-[0_12px_30px_rgba(0,0,0,0.22)] overflow-hidden transition-all duration-500 ease-in-out ${
             isVisible
               ? "translate-y-0 opacity-100"
               : "translate-y-8 opacity-0 pointer-events-none"
