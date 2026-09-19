@@ -108,20 +108,20 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Floating Social Proof Toast - Placed cleanly in bottom whitespace */}
+      {/* Floating Social Proof Toast - 10/10 Pixel-Perfect Alignment */}
       {currentNotif && (
         <div
-          className={`fixed bottom-8 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-full border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2 shadow-lg transition-all duration-300 ease-in-out pointer-events-none ${
+          className={`fixed bottom-8 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-[340px] mx-auto sm:mx-0 flex items-center gap-2 rounded-full border border-gray-200/90 bg-white/98 backdrop-blur-md px-3 py-1.5 shadow-md overflow-hidden transition-all duration-300 ease-in-out pointer-events-none ${
             isVisible
               ? "translate-y-0 opacity-100"
-              : "translate-y-4 opacity-0"
+              : "translate-y-3 opacity-0"
           }`}
         >
           <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#CC0000] text-white">
             <Check className="w-2.5 h-2.5" strokeWidth={3} />
           </div>
 
-          <div className="text-[10px] sm:text-[11px] text-[#222222] truncate leading-tight">
+          <div className="text-[9.5px] sm:text-[10.5px] text-[#222222] truncate leading-tight">
             <span className="font-bold">{currentNotif.name} </span>
             <span className="text-[#555555]">{currentNotif.action}</span>
           </div>
