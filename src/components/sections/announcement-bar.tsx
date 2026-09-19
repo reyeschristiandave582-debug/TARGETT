@@ -76,7 +76,7 @@ export default function AnnouncementBar() {
 
   return (
     <>
-      {/* Top Banner Bar - Perfect Status Bar Clearance */}
+      {/* Top Banner Bar */}
       <div 
         className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2 px-3 sm:px-4 shadow-sm backdrop-blur-md"
         style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 24px)" }}
@@ -122,20 +122,20 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Floating Social Proof Toast - Floats cleanly above CTA button */}
+      {/* Floating Social Proof Toast - Placed at bottom-10 (matching 2nd photo exactly) */}
       {currentNotif && (
         <div
-          className={`fixed bottom-[185px] sm:bottom-8 left-4 right-4 sm:left-6 sm:right-auto z-[9999] max-w-[290px] mx-auto sm:mx-0 flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/95 backdrop-blur-md px-3.5 py-1.5 shadow-md transition-all duration-300 ease-in-out ${
+          className={`fixed bottom-10 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-full border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2 shadow-lg transition-all duration-300 ease-in-out pointer-events-none ${
             isVisible
-              ? "translate-y-0 opacity-100 scale-100"
-              : "translate-y-3 opacity-0 scale-95 pointer-events-none"
+              ? "translate-y-0 opacity-100"
+              : "translate-y-4 opacity-0"
           }`}
         >
           <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#CC0000] text-white">
             <Check className="w-2.5 h-2.5" strokeWidth={3} />
           </div>
 
-          <div className="text-[9.5px] sm:text-[10.5px] text-[#222222] truncate leading-tight">
+          <div className="text-[10px] sm:text-[11px] text-[#222222] truncate leading-tight">
             <span className="font-bold">{currentNotif.name} </span>
             <span className="text-[#555555]">{currentNotif.action}</span>
           </div>
