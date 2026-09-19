@@ -13,9 +13,7 @@ const firstNames = [
   "Logan", "Lillian", "Alexander", "Nora", "Jackson", "Riley", "Sebastian", "Zoey", "Jack", "Stella",
   "Owen", "Aurora", "Theodore", "Ellie", "Julian", "Hannah", "Jayden", "Hazel", "Grayson", "Violet",
   "Leo", "Aria", "Gabriel", "Lily", "Isaac", "Eleanor", "Oliver", "Claire", "Ezra", "Skylar",
-  "Charles", "Lucy", "Thomas", "Paisley", "Caleb", "Everly", "Josiah", "Anna", "Christian", "Caroline",
-  "Andrew", "Nova", "Mateo", "Emerson", "Lincoln", "Kinsley", "Ryan", "Audrey", "Jaxon", "Maya",
-  "Nathan", "Aaliyah", "Aaron", "Madelyn", "Isaiah", "Autumn", "Thomas", "Alicia", "Charles", "Eva"
+  "Charles", "Lucy", "Thomas", "Paisley", "Caleb", "Everly", "Josiah", "Anna", "Christian", "Caroline"
 ];
 
 const lastInitials = ["P.", "M.", "R.", "S.", "T.", "V.", "W.", "K.", "L.", "B.", "C.", "D.", "E.", "F.", "G.", "H."];
@@ -34,10 +32,9 @@ const notifications: NotificationItem[] = Array.from({ length: 100 }, (_, i) => 
 }));
 
 /**
- * High-Converting AnnouncementBar & Social Proof Toast (Target Edition)
- * Adjusted with pt-14 top padding and bottom-[160px] toast positioning.
+ * AnnouncementBar Component (Compact Mobile Edition)
  */
-const AnnouncementBar = () => {
+export default function AnnouncementBar() {
   const [currentNotif, setCurrentNotif] = useState<NotificationItem | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [timeLeft, setTimeLeft] = useState<number>(300);
@@ -82,66 +79,63 @@ const AnnouncementBar = () => {
 
   return (
     <>
-      {/* Top Banner Bar with Expanded Top Padding for Status Bar Clearance */}
-      <div className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pt-14 sm:pt-[calc(env(safe-area-inset-top)+14px)] pb-2.5 px-3 sm:px-4 shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur-md">
-        {/* Background Sparkles */}
+      {/* Top Banner Bar - Slim & Fits Any Phone Screen */}
+      <div className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pt-6 sm:pt-[calc(env(safe-area-inset-top)+4px)] pb-1.5 px-2.5 sm:px-4 shadow-sm backdrop-blur-md">
+        {/* Sparkles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
           <Sparkles 
-            className="absolute left-[2%] sm:left-[6%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-pulse" 
+            className="absolute left-[2%] sm:left-[6%] top-1/2 -translate-y-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 text-white animate-pulse" 
             strokeWidth={1.5}
           />
           <Sparkles 
-            className="absolute right-[2%] sm:right-[6%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-pulse" 
+            className="absolute right-[2%] sm:right-[6%] top-1/2 -translate-y-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 text-white animate-pulse" 
             strokeWidth={1.5}
           />
         </div>
 
         {/* Content Stack */}
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto px-1 space-y-1">
-          {/* Main Security Headline */}
-          <div className="flex items-center justify-center gap-1.5 w-full text-center">
-            <Lock 
-              className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white shrink-0 -mt-0.5" 
-              strokeWidth={2.5}
-            />
-            <p className="text-white text-[9.5px] xs:text-[10.5px] sm:text-[12px] font-bold tracking-tight leading-none">
+        <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto space-y-0.5">
+          {/* Headline */}
+          <div className="flex items-center justify-center gap-1 w-full text-center">
+            <Lock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white shrink-0 -mt-0.5" strokeWidth={2.5} />
+            <p className="text-white text-[9px] xs:text-[10px] sm:text-[11px] font-bold tracking-tight leading-none">
               256-Bit SSL Secured &bull; Over 1,400+ verified today
             </p>
           </div>
 
-          {/* Dynamic Urgency & Compliance Line */}
-          <div className="flex items-center justify-center gap-2 text-white/90">
-            <span className="text-[8px] sm:text-[9px] uppercase tracking-wider font-semibold">
+          {/* Subtext + Timer */}
+          <div className="flex items-center justify-center gap-1.5 text-white/90">
+            <span className="text-[7.5px] xs:text-[8px] sm:text-[8.5px] uppercase tracking-wider font-semibold">
               SECURE ELIGIBILITY CHECK
             </span>
-            <span className="text-white/40">•</span>
-            <div className="flex items-center gap-1 bg-black/20 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-bold text-yellow-300">
-              <Clock className="w-2.5 h-2.5 text-yellow-300 animate-spin" style={{ animationDuration: "3s" }} />
+            <span className="text-white/40 text-[7.5px]">&bull;</span>
+            <div className="flex items-center gap-0.5 bg-black/20 px-1 py-0.2 rounded text-[7.5px] xs:text-[8px] sm:text-[8.5px] font-mono font-bold text-yellow-300">
+              <Clock className="w-2 h-2 text-yellow-300 animate-spin" style={{ animationDuration: "3s" }} />
               <span>RESERVED: {formatTime(timeLeft)}</span>
             </div>
           </div>
         </div>
 
         {/* Shimmer Border */}
-        <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent w-full opacity-60 overflow-hidden">
+        <div className="absolute bottom-0 left-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent w-full opacity-60 overflow-hidden">
           <div className="absolute inset-0 bg-white/40 animate-shine"></div>
         </div>
       </div>
 
-      {/* Social Proof Floating Toast (Elevated to bottom-[160px] to clear Step 5) */}
+      {/* Floating Social Proof Toast */}
       {currentNotif && (
         <div
-          className={`fixed bottom-[160px] sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-xl border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2.5 shadow-[0_12px_30px_rgba(0,0,0,0.22)] overflow-hidden transition-all duration-500 ease-in-out ${
+          className={`fixed bottom-4 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-xs mx-auto sm:mx-0 flex items-center gap-2 rounded-lg border-l-[3px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3 py-2 shadow-lg transition-all duration-300 ease-in-out ${
             isVisible
               ? "translate-y-0 opacity-100"
-              : "translate-y-8 opacity-0 pointer-events-none"
+              : "translate-y-4 opacity-0 pointer-events-none"
           }`}
         >
-          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#CC0000] text-white">
-            <Check className="w-3 h-3" strokeWidth={3} />
+          <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#CC0000] text-white">
+            <Check className="w-2.5 h-2.5" strokeWidth={3} />
           </div>
 
-          <div className="text-[11px] sm:text-xs text-[#222222] truncate leading-tight">
+          <div className="text-[10px] sm:text-[11px] text-[#222222] truncate leading-tight">
             <span className="font-bold">{currentNotif.name} </span>
             <span className="text-[#555555]">{currentNotif.action}</span>
           </div>
@@ -149,6 +143,4 @@ const AnnouncementBar = () => {
       )}
     </>
   );
-};
-
-export default AnnouncementBar;
+}
