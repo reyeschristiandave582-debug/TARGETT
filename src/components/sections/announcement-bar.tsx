@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Lock, Sparkles, Check, Clock } from "lucide-react";
+import { Lock, Sparkles, Check, ShieldCheck } from "lucide-react";
 
 interface NotificationItem {
   name: string;
@@ -34,20 +34,6 @@ const notifications: NotificationItem[] = Array.from({ length: 100 }, (_, i) => 
 export default function AnnouncementBar() {
   const [currentNotif, setCurrentNotif] = useState<NotificationItem | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [timeLeft, setTimeLeft] = useState<number>(300);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 300));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-  };
 
   useEffect(() => {
     const showRandomNotif = () => {
@@ -76,7 +62,7 @@ export default function AnnouncementBar() {
 
   return (
     <>
-      {/* Top Banner Bar */}
+      {/* Top Banner Bar - Clean Security & Compliance Badges */}
       <div 
         className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2 px-3 sm:px-4 shadow-sm backdrop-blur-md"
         style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 24px)" }}
@@ -95,7 +81,7 @@ export default function AnnouncementBar() {
 
         {/* Content Stack */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto space-y-0.5">
-          {/* Headline */}
+          {/* Main Security Headline */}
           <div className="flex items-center justify-center gap-1 w-full text-center">
             <Lock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white shrink-0 -mt-0.5" strokeWidth={2.5} />
             <p className="text-white text-[9px] xs:text-[10px] sm:text-[11px] font-bold tracking-tight leading-none">
@@ -103,26 +89,26 @@ export default function AnnouncementBar() {
             </p>
           </div>
 
-          {/* Subtext + Timer */}
+          {/* Subtext Trust Badges (No Timer) */}
           <div className="flex items-center justify-center gap-1.5 text-white/90">
             <span className="text-[7.5px] xs:text-[8px] sm:text-[8.5px] uppercase tracking-wider font-semibold">
               SECURE ELIGIBILITY CHECK
             </span>
             <span className="text-white/40 text-[7.5px]">&bull;</span>
-            <div className="flex items-center gap-0.5 bg-black/20 px-1 py-0.2 rounded text-[7.5px] xs:text-[8px] sm:text-[8.5px] font-mono font-bold text-yellow-300">
-              <Clock className="w-2 h-2 text-yellow-300 animate-spin" style={{ animationDuration: "3s" }} />
-              <span>RESERVED: {formatTime(timeLeft)}</span>
+            <div className="flex items-center gap-1 text-[7.5px] xs:text-[8px] sm:text-[8.5px] font-semibold text-white/95">
+              <ShieldCheck className="w-2.5 h-2.5 text-emerald-300" strokeWidth={2.5} />
+              <span className="uppercase tracking-wider">PRIVACY PROTECTED</span>
             </div>
           </div>
         </div>
 
-        {/* Accent Line */}
+        {/* Shimmer Line */}
         <div className="absolute bottom-0 left-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent w-full opacity-60 overflow-hidden">
           <div className="absolute inset-0 bg-white/40 animate-shine"></div>
         </div>
       </div>
 
-      {/* Floating Social Proof Toast */}
+      {/* Floating Social Proof Toast - Clean Floating Position Below CTA */}
       {currentNotif && (
         <div
           className={`fixed bottom-12 sm:bottom-6 left-3 right-3 sm:left-4 sm:right-auto z-[9999] max-w-sm mx-auto sm:mx-0 flex items-center gap-2.5 rounded-full border-l-[4px] border-[#CC0000] bg-white/98 backdrop-blur-md px-3.5 py-2 shadow-lg transition-all duration-300 ease-in-out pointer-events-none ${
