@@ -48,11 +48,6 @@ export default function CTAButton() {
         </div>
       </a>
 
-      {/* Trust Micro-Copy */}
-      <p className="mt-2.5 text-gray-500 text-[10px] sm:text-[11px] font-medium tracking-tight text-center">
-        (No purchase required &bull; Eligibility and reward terms apply)
-      </p>
-
       {/* Ambient Floor Glow */}
       <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-4/5 h-6 bg-[#CC0000]/20 blur-xl -z-10 rounded-full pointer-events-none" />
     </div>
