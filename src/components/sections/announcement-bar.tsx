@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Lock, Sparkles, Check, ShieldCheck } from "lucide-react";
+import { Lock, Sparkles, Check, Clock } from "lucide-react";
 
 interface NotificationItem {
   name: string;
@@ -35,6 +35,26 @@ export default function AnnouncementBar() {
   const [currentNotif, setCurrentNotif] = useState<NotificationItem | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
+  // 5-minute persistent timer state (300 seconds)
+  const [timeLeft, setTimeLeft] = useState<number>(300);
+
+  // Timer countdown hook
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+    const timerInterval = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timerInterval);
+  }, [timeLeft]);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
+
+  // Social proof notification loop
   useEffect(() => {
     const showRandomNotif = () => {
       const randomIndex = Math.floor(Math.random() * notifications.length);
@@ -62,10 +82,10 @@ export default function AnnouncementBar() {
 
   return (
     <>
-      {/* Top Banner Bar - iOS Safe Area Padding + Security Badges */}
+      {/* Target Red Sticky Top Bar with Safe Area Protection */}
       <div 
-        className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2 px-3 sm:px-4 shadow-sm backdrop-blur-md"
-        style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 6px)" }}
+        className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2.5 px-2 sm:px-4 shadow-sm backdrop-blur-md"
+        style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 14px)" }}
       >
         {/* Background Sparkles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
@@ -79,26 +99,27 @@ export default function AnnouncementBar() {
           />
         </div>
 
-        {/* Content Stack */}
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto space-y-0.5">
-          {/* Headline */}
-          <div className="flex items-center justify-center gap-1 w-full text-center">
-            <Lock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white shrink-0 -mt-0.5" strokeWidth={2.5} />
-            <p className="text-white text-[9px] xs:text-[10px] sm:text-[11px] font-bold tracking-tight leading-none">
-              256-Bit SSL Secured &bull; Over 1,400+ verified today
-            </p>
-          </div>
+        {/* High-Converting Single Line Container */}
+        <div className="relative z-10 flex items-center justify-center max-w-2xl mx-auto">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-white text-[10.5px] xs:text-[11px] sm:text-[12px] font-bold tracking-tight text-center leading-none">
+            {/* Lock Icon */}
+            <Lock className="w-3.5 h-3.5 text-white shrink-0" strokeWidth={2.5} />
 
-          {/* Subtext Trust Badges */}
-          <div className="flex items-center justify-center gap-1.5 text-white/90">
-            <span className="text-[7.5px] xs:text-[8px] sm:text-[8.5px] uppercase tracking-wider font-semibold">
-              SECURE ELIGIBILITY CHECK
+            <span className="whitespace-nowrap">Your spot is reserved for:</span>
+            
+            {/* Dark Red Timer Pill */}
+            <span className="inline-flex items-center gap-1 bg-[#8A0000] text-white px-2 py-0.5 rounded-md font-mono text-[11px] sm:text-[12px] font-bold shadow-inner border border-white/20 shrink-0">
+              <Clock className="w-3 h-3 text-white animate-pulse" />
+              <span>{formatTime(timeLeft)}</span>
             </span>
-            <span className="text-white/40 text-[7.5px]">&bull;</span>
-            <div className="flex items-center gap-1 text-[7.5px] xs:text-[8px] sm:text-[8.5px] font-semibold text-white/95">
-              <ShieldCheck className="w-2.5 h-2.5 text-emerald-300" strokeWidth={2.5} />
-              <span className="uppercase tracking-wider">PRIVACY PROTECTED</span>
-            </div>
+
+            {/* Separator Bullet */}
+            <span className="text-white/40 font-normal select-none">•</span>
+
+            {/* Social Proof Count */}
+            <span className="font-semibold text-white/95 whitespace-nowrap">
+              1,400+ verified today
+            </span>
           </div>
         </div>
 
@@ -108,7 +129,7 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Floating Social Proof Toast - Positioned at Bottom Below CTA Button */}
+      {/* Floating Target-Styled Social Proof Toast */}
       {currentNotif && (
         <div
           className={`fixed bottom-12 left-4 right-4 z-[9999] max-w-[340px] mx-auto flex items-center gap-2 rounded-full border border-gray-200/90 bg-white/98 backdrop-blur-md px-3.5 py-1.5 shadow-lg overflow-hidden transition-all duration-300 ease-in-out pointer-events-none ${
