@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Lock, Sparkles, Check, ShieldCheck } from "lucide-react";
+import { Lock, Sparkles, Check, ShieldCheck, Clock } from "lucide-react";
 
 interface NotificationItem {
   name: string;
@@ -35,6 +35,23 @@ export default function AnnouncementBar() {
   const [currentNotif, setCurrentNotif] = useState<NotificationItem | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
+  // Countdown timer state initialized to 4 minutes (240 seconds)
+  const [timeLeft, setTimeLeft] = useState<number>(240);
+
+  useEffect(() => {
+    const timerInterval = setInterval(() => {
+      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(timerInterval);
+  }, []);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+  };
+
   useEffect(() => {
     const showRandomNotif = () => {
       const randomIndex = Math.floor(Math.random() * notifications.length);
@@ -62,9 +79,9 @@ export default function AnnouncementBar() {
 
   return (
     <>
-      {/* Top Banner Bar - iOS Safe Area Padding + Security Badges */}
+      {/* Top Banner Bar - Countdown Urgency Bar */}
       <div 
-        className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2 px-3 sm:px-4 shadow-sm backdrop-blur-md"
+        className="sticky top-0 z-50 w-full bg-black border-b border-neutral-800 pb-2 px-3 sm:px-4 shadow-sm backdrop-blur-md"
         style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 6px)" }}
       >
         {/* Background Sparkles */}
@@ -81,24 +98,19 @@ export default function AnnouncementBar() {
 
         {/* Content Stack */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto space-y-0.5">
-          {/* Headline */}
-          <div className="flex items-center justify-center gap-1 w-full text-center">
-            <Lock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white shrink-0 -mt-0.5" strokeWidth={2.5} />
-            <p className="text-white text-[9px] xs:text-[10px] sm:text-[11px] font-bold tracking-tight leading-none">
-              256-Bit SSL Secured &bull; Over 1,400+ verified today
+          {/* Headline Timer */}
+          <div className="flex items-center justify-center gap-1.5 w-full text-center">
+            <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white shrink-0 -mt-0.5" strokeWidth={2.5} />
+            <p className="text-white text-[10px] xs:text-[11px] sm:text-[12px] font-bold tracking-tight leading-none">
+              You have <span className="tabular-nums font-black">{formatTime(timeLeft)}</span> minutes left to unlock your reward
             </p>
           </div>
 
-          {/* Subtext Trust Badges */}
+          {/* Subtext Action Directive */}
           <div className="flex items-center justify-center gap-1.5 text-white/90">
-            <span className="text-[7.5px] xs:text-[8px] sm:text-[8.5px] uppercase tracking-wider font-semibold">
-              SECURE ELIGIBILITY CHECK
+            <span className="text-[7.5px] xs:text-[8px] sm:text-[8.5px] uppercase tracking-wider font-semibold text-neutral-300">
+              — COMPLETE THE STEPS BEFORE ACCESS EXPIRES —
             </span>
-            <span className="text-white/40 text-[7.5px]">&bull;</span>
-            <div className="flex items-center gap-1 text-[7.5px] xs:text-[8px] sm:text-[8.5px] font-semibold text-white/95">
-              <ShieldCheck className="w-2.5 h-2.5 text-emerald-300" strokeWidth={2.5} />
-              <span className="uppercase tracking-wider">PRIVACY PROTECTED</span>
-            </div>
           </div>
         </div>
 
