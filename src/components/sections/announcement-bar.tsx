@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Lock, Sparkles, Check, Clock } from "lucide-react";
+import { Lock, Sparkles, Check, ShieldCheck, Clock } from "lucide-react";
 
 interface NotificationItem {
   name: string;
@@ -90,7 +90,7 @@ export default function AnnouncementBar() {
     <>
       {/* Target Red Sticky Top Bar with iOS Notch & Status Bar Protection */}
       <div 
-        className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2.5 px-2 sm:px-4 shadow-md backdrop-blur-md"
+        className="sticky top-0 z-50 w-full bg-[#CC0000] border-b border-[#A00000] pb-2 px-3 sm:px-4 shadow-md backdrop-blur-md"
         style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 14px)" }}
       >
         {/* Background Sparkle Accents */}
@@ -105,27 +105,30 @@ export default function AnnouncementBar() {
           />
         </div>
 
-        {/* Streamlined Single-Line Header Layout */}
-        <div className="relative z-10 flex items-center justify-center max-w-2xl mx-auto">
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-white text-[10.5px] xs:text-[11px] sm:text-[12px] font-bold tracking-tight text-center leading-none">
-            {/* Lock Icon */}
-            <Lock className="w-3.5 h-3.5 text-white shrink-0" strokeWidth={2.5} />
+        {/* Content Stack */}
+        <div className="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto space-y-1">
+          {/* Headline with Live Timer */}
+          <div className="flex items-center justify-center gap-1.5 w-full text-center">
+            <Lock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white shrink-0 -mt-0.5" strokeWidth={2.5} />
+            <p className="text-white text-[9.5px] xs:text-[10.5px] sm:text-[11.5px] font-bold tracking-tight leading-none flex items-center gap-1.5 flex-wrap justify-center">
+              <span>Your spot is reserved for:</span>
+              <span className="inline-flex items-center gap-1 bg-[#8A0000] border border-white/20 text-white px-1.5 py-0.5 rounded font-mono text-[9px] xs:text-[10px] sm:text-[11px] font-bold shadow-sm">
+                <Clock className="w-2.5 h-2.5 text-white animate-pulse" />
+                <span>{mounted ? formatTime(timeLeft) : "05:00"}</span>
+              </span>
+            </p>
+          </div>
 
-            <span className="whitespace-nowrap">Your spot is reserved for:</span>
-            
-            {/* High-Contrast Dark Red Countdown Pill */}
-            <span className="inline-flex items-center gap-1 bg-[#8A0000] text-white px-2 py-0.5 rounded-md font-mono text-[11px] sm:text-[12px] font-bold shadow-inner border border-white/20 shrink-0">
-              <Clock className="w-3 h-3 text-white animate-pulse" />
-              <span>{mounted ? formatTime(timeLeft) : "05:00"}</span>
+          {/* Subtext Trust Badges */}
+          <div className="flex items-center justify-center gap-1.5 text-white/90">
+            <span className="text-[7.5px] xs:text-[8px] sm:text-[8.5px] uppercase tracking-wider font-semibold">
+              OVER 1,400+ VERIFIED TODAY
             </span>
-
-            {/* Separator Bullet */}
-            <span className="text-white/40 font-normal select-none">•</span>
-
-            {/* Social Proof Metric */}
-            <span className="font-semibold text-white/95 whitespace-nowrap">
-              1,400+ verified today
-            </span>
+            <span className="text-white/40 text-[7.5px]">&bull;</span>
+            <div className="flex items-center gap-1 text-[7.5px] xs:text-[8px] sm:text-[8.5px] font-semibold text-white/95">
+              <ShieldCheck className="w-2.5 h-2.5 text-emerald-300" strokeWidth={2.5} />
+              <span className="uppercase tracking-wider">256-BIT SSL SECURED</span>
+            </div>
           </div>
         </div>
 
@@ -135,7 +138,7 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Floating Bottom Social Proof Toast (Positioned Below Main CTA Button) */}
+      {/* Floating Bottom Social Proof Toast */}
       {mounted && currentNotif && (
         <div
           className={`fixed bottom-4 left-4 right-4 z-[9999] max-w-[340px] mx-auto flex items-center gap-2 rounded-full border border-gray-200/90 bg-white/98 backdrop-blur-md px-3.5 py-1.5 shadow-lg overflow-hidden transition-all duration-300 ease-in-out pointer-events-none ${
